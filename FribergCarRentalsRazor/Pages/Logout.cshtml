@@ -1,0 +1,31 @@
+﻿@page
+@model LogoutModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Du har loggats ut!</h1>    
+</div>
+
+
+<script>
+    function refreshPage() {
+        // Kontrollera hur många gånger sidan har uppdaterats
+        var reloadCount = localStorage.getItem('reloadCount') || 0;
+
+        if (reloadCount < 1) {
+            // Öka räknaren och lagra den i localStorage
+            localStorage.setItem('reloadCount', Number(reloadCount) + 1);
+            setTimeout(function () { window.location.reload(); }, 50);
+        } else {
+            // Nollställ räknaren efter uppdateringarna
+            localStorage.setItem('reloadCount', 0);
+        }
+    }
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

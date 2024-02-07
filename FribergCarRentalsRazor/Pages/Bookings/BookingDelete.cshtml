@@ -1,0 +1,47 @@
+﻿@page
+@model FribergCarRentalsRazor.Pages.Bookings.BookingDeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    var userRole = HttpContext.Request.Cookies["UserRole"];
+}
+
+<h1>Ta bort</h1>
+
+<h3>Är du säker på att du vill ta bort den här bokningen?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Booking.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Booking.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Booking.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Booking.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Booking.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Booking.EndDate)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Booking.BookingId" />
+        <input type="submit" value="Ta bort" class="btn btn-danger" /> |
+        @if (userRole == "Customer")
+        {
+            <a asp-page="/Customer/CustomerBookingIndex">Tillbaka till bokningar</a>
+        }
+        @if (userRole == "Admin")
+        {
+            <a asp-page="/Admin/BookingIndex">Tillbaka till bokningar</a>
+        }
+    </form>
+</div>

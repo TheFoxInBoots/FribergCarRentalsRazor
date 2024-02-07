@@ -1,0 +1,46 @@
+﻿@page
+@model CustomerDeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Ta Bort</h1>
+
+<h3>Är du säker på att du vill ta bort den här kunden?</h3>
+<div>
+    <h4>Kund</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Password)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Customer.CustomerId" />
+        <input type="submit" value="Ta bort" class="btn btn-danger" /> |
+        <a asp-page="/Admin/CustomerIndex">Tillbaka till kunder</a>
+    </form>
+</div>

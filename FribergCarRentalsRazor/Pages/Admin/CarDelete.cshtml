@@ -1,0 +1,47 @@
+﻿@page
+@model FribergCarRentalsRazor.Pages.Admin.CarDeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Är du säker på att du vill ta bort den här bilen?</h3>
+<div>
+    <hr />
+    <img src="@Html.DisplayFor(model => model.Car.Pic)" width="70%" />
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Brand)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Year)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Year)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Color)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Color)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Car.CarId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="/Cars/CarIndex">Tillbaka till bilar</a>
+    </form>
+</div>

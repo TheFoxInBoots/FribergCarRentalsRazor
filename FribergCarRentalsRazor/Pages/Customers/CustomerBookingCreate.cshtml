@@ -1,0 +1,52 @@
+﻿@page
+@model Customers.CustomerBookingCreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Skapa bokning</h1>
+<img src="@Model.Car.Pic" alt="Bilbild" height="500px"/>
+<p>Bokningskostnaden är 150 kr/dag.</p>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>           
+            <div class="form-group">
+                <label asp-for="Booking.StartDate" class="control-label"></label>
+                <input asp-for="Booking.StartDate" class="form-control" type="date" id="start-date" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="Booking.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.EndDate" class="control-label"></label>
+                <input asp-for="Booking.EndDate" class="form-control" type="date" id="end-date" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="Booking.EndDate" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Booking.Customer" />
+            <input type="hidden" asp-for="Booking.Car" />
+            <input type="hidden" asp-for="Booking.Price" />              
+            <div class="form-group">
+                <input type="submit" value="Skapa" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Customers/CustomerBookingIndex">Tillbaka till bokningar</a>
+</div>
+
+
+<script>
+    document.getElementById('start-date').addEventListener('change', function() {
+        document.getElementById('end-date').min = this.value;
+    });
+</script>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,88 @@
+﻿@page
+@model BookingIndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    var userRole = HttpContext.Request.Cookies["UserRole"];
+}
+
+<h1>Bokningar</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+@if (userRole == "Admin") // Visar bara Admin-menyn om userRole är satt som Admin
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingList[0].Customer)
+                </th>
+                <th>
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingList[0].Car)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingList[0].Car.Brand)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingList[0].Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingList[0].StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingList[0].EndDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.BookingList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.LastName)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.Car.Pic)" height="50px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Car.Brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        <a asp-page="/Bookings/BookingEdit" asp-route-id="@item.BookingId">Ändra</a> |
+                        <a asp-page="/Bookings/BookingDetails" asp-route-id="@item.BookingId">Detaljer</a> |
+                        <a asp-page="/Bookings/BookingDelete" asp-route-id="@item.BookingId">Ta bort</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

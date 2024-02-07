@@ -1,0 +1,62 @@
+﻿@page
+@model FribergCarRentalsRazor.Pages.Admin.CustomerIndexModel
+
+@{
+    ViewData["Title"] = "CustomerIndex";
+    var customerList = await Model.Customer;
+}
+
+<h1>Kunder</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+<p>
+    <a asp-page="/Admin/CustomerCreate">Skapa ny kund</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => customerList[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => customerList[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => customerList[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => customerList[0].Password)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in customerList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                <a asp-page="/Customer/CustomerEdit" asp-route-id="@item.CustomerId">Ändra</a> |
+                <a asp-page="/Customer/CustomerDetails" asp-route-id="@item.CustomerId">Detaljer</a> |
+                <a asp-page="/Admin/CustomerDelete" asp-route-id="@item.CustomerId">Ta bort</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

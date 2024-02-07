@@ -1,0 +1,91 @@
+﻿@page
+@model FribergCarRentalsRazor.Pages.Cars.CarIndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    var carList = await Model.Car;
+    var userRole = HttpContext.Request.Cookies["UserRole"];
+}
+
+<h1>Index</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+@if (userRole == "Admin")
+                {
+<p>
+    <a asp-page="Create">Lägg till ny bil</a>
+</p>
+                }
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => carList[0].Pic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => carList[0].Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => carList[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => carList[0].Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => carList[0].Color)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in carList)
+        {
+            <tr>
+                <td>
+                    <a href="@Html.DisplayFor(modelItem => item.Pic)" target="_blank">
+                        <img src="@Html.DisplayFor(modelItem => item.Pic)" height="50px" />
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                @if (userRole == "Admin")
+                {
+                    <td>
+
+                        <a asp-page="/Admin/CarEdit" asp-route-id="@item.CarId">Ändra</a> |                        
+                        <a asp-page="/Admin/Delete" asp-route-id="@item.CarId">Ta bort</a>
+                    </td>
+                }
+                @if (userRole == null) // Boka - Om ingen användare är inloggad så skickas besökaren till att antingen logga in eller skapa en ny kund
+                {
+                    <td>
+                        | <a asp-page="/Cars/CarDetails" asp-route-id="@item.CarId">Detaljer</a> |
+                        <a asp-page="/Login" asp-route-id="@item.CarId">Boka</a>
+                    </td>
+                }
+                @if (userRole == "Customer")
+                {
+                    <td>
+                        | <a asp-page="/Customers/CustomerBookingCreate" asp-route-id="@item.CarId">Boka</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
