@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FribergCarRentalsRazor.Data;
+using System.Runtime.ConstrainedExecution;
 
 namespace FribergCarRentalsRazor.Pages.Bookings
 {
@@ -25,11 +26,6 @@ namespace FribergCarRentalsRazor.Pages.Bookings
 
         [BindProperty]
         public Booking Booking { get; set; } = default!;
-        public IBooking BookingRep { get; }
-        public List<Car> Cars { get; set; } = new List<Car>(); // Lägg till en lista med bilar
-        [BindProperty]
-        public int SelectedCarId { get; set; }
-        public Car Car { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -44,17 +40,15 @@ namespace FribergCarRentalsRazor.Pages.Bookings
                 return NotFound();
             }
 
-            Cars = await carRep.GetAllCars(); // Fyll listan med bilar
-
             return Page();
         }
-
+                
         public async Task<IActionResult> OnPostAsync(Booking booking)
-        {            
+        {
+            Booking.Price = Booking.CalculatedPrice;
+
             try
             {
-                Booking.Car = await carRep.GetCarById(SelectedCarId);
-                Booking.Price = Booking.CalculatedPrice;
                 await bookingRep.EditBooking(booking);
             }
             catch (DbUpdateConcurrencyException)
@@ -68,20 +62,11 @@ namespace FribergCarRentalsRazor.Pages.Bookings
                     throw;
                 }
             }
-
-            TempData["Message"] = "Ändringarna har sparats!";
-
-            if (HttpContext.Request.Cookies["UserRole"] == "Customer")
-            {
-                return RedirectToPage("/Customers/CustomerBookingIndex");
-            }
-
-            return RedirectToPage("/Admin/BookingIndex");
+            return RedirectToPage("/Customers/CustomerBookingIndex");
         }
 
         private bool BookingExists(int id)
         {
-            // Kontrollera om kunden med det angivna ID:t finns i databasen
             return bookingRep.GetBookingById(id) != null;
         }
     }

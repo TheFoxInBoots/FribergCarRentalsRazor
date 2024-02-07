@@ -31,12 +31,7 @@ namespace FribergCarRentalsRazor.Data
         public Booking()
         {
             StartDate = new DateTime(DateTime.Now.Year, 1, 1);
-            EndDate = new DateTime(DateTime.Now.Year, 1, 1);
-
-            //if (EndDate < StartDate) 
-            //{
-            //    EndDate = StartDate.AddDays(1); // Om EndDate är lagd tidigare än StartDate så sätts det till dagen efter StartDate
-            
+            EndDate = new DateTime(DateTime.Now.Year, 1, 1);            
         }               
     }
 }
