@@ -75,7 +75,7 @@
                 @if (userRole == null) // Boka - Om ingen användare är inloggad så skickas besökaren till att antingen logga in eller skapa en ny kund
                 {
                     <td>
-                        | <a asp-page="/Cars/CarDetails" asp-route-id="@item.CarId">Detaljer</a> |
+                        <a asp-page="/Cars/CarDetails" asp-route-id="@item.CarId">Detaljer</a> |
                         <a asp-page="/Login" asp-route-id="@item.CarId">Boka</a>
                     </td>
                 }

@@ -17,8 +17,8 @@ namespace FribergCarRentalsRazor.Pages.Customers
         {
             this.customerRep = customerRep;
         }
-      
-      public Customer Customer { get; set; } = default!; 
+
+        public Customer Customer { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

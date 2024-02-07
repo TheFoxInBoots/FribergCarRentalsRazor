@@ -28,7 +28,7 @@ namespace FribergCarRentalsRazor.Pages.Customers
             {
                 return NotFound();
             }
-           Customer = await customerRep.GetCustomerById(id.Value);
+            Customer = await customerRep.GetCustomerById(id.Value);
 
             if (Customer == null)
             {
@@ -46,14 +46,14 @@ namespace FribergCarRentalsRazor.Pages.Customers
             }
 
             try
-            {            
+            {
                 await customerRep.EditCustomer(customer);
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!CustomerExists(Customer.CustomerId))
                 {
-                    return NotFound(); 
+                    return NotFound();
                 }
                 else
                 {

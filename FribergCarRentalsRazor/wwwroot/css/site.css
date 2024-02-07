@@ -18,7 +18,8 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
+    position: relative;
+    min-height: 100vh;    
     background-color: #112126;
     /*background-color: #203036;*/
 }
@@ -171,6 +172,10 @@ td {
 
 
 footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
     background-color: #E8AC2F;
     color: #112126;
 }
