@@ -67,7 +67,6 @@
                 @if (userRole == "Admin")
                 {
                     <td>
-
                         <a asp-page="/Admin/CarEdit" asp-route-id="@item.CarId">Ändra</a> |                        
                         <a asp-page="/Admin/Delete" asp-route-id="@item.CarId">Ta bort</a>
                     </td>
@@ -82,7 +81,8 @@
                 @if (userRole == "Customer")
                 {
                     <td>
-                        | <a asp-page="/Customers/CustomerBookingCreate" asp-route-id="@item.CarId">Boka</a>
+                        <a asp-page="/Cars/CarDetails" asp-route-id="@item.CarId">Detaljer</a> |
+                        <a asp-page="/Customers/CustomerBookingCreate" asp-route-id="@item.CarId">Boka</a>
                     </td>
                 }
             </tr>
