@@ -7,23 +7,23 @@
 
 <h1>Ändra bokning</h1>
 
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Booking.BookingId" />   
-            <input type="hidden" asp-for="Booking.Price" />
             <div class="form-group">
                 <label asp-for="Booking.StartDate" class="control-label"></label>
-                <input asp-for="Booking.StartDate" class="form-control" />
+                <input asp-for="Booking.StartDate" class="form-control" type="date" id="start-date" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
                 <span asp-validation-for="Booking.StartDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Booking.EndDate" class="control-label"></label>
-                <input asp-for="Booking.EndDate" class="form-control" />
+                <input asp-for="Booking.EndDate" class="form-control" type="date" id="end-date" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
                 <span asp-validation-for="Booking.EndDate" class="text-danger"></span>
             </div>
+            <input type="hidden" asp-for="Booking.Customer" />
+            <input type="hidden" asp-for="Booking.Car" />
+            <input type="hidden" asp-for="Booking.Price" />
             <div class="form-group">
                 <input type="submit" value="Spara" class="btn btn-primary" />
             </div>

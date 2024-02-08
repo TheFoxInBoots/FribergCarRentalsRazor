@@ -62,7 +62,7 @@ namespace FribergCarRentalsRazor.Pages.Customers
             }
             TempData["Message"] = "Ändringarna har sparats!";
 
-            return RedirectToPage("/Customers/CustomerDetails");
+            return RedirectToPage("/Customers/CustomerDetails", new { id = Customer.CustomerId });
         }
 
         private bool CustomerExists(int id)

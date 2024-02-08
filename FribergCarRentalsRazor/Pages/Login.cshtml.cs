@@ -51,7 +51,7 @@ namespace FribergCarRentalsRazor.Pages
                 TempData["Message"] = "Du har loggats in!";
             }
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("./Index");
         }
 
         public async Task<IActionResult> OnPostRegisterAsync(Customer customer)

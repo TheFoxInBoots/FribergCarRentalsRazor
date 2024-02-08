@@ -4,13 +4,6 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-/*
-html {
-    font-size: 14px;
-    position: relative;
-    min-height: 100%;
-}*/
-
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -98,9 +91,20 @@ nav li a:hover {
   /*  border: 1px solid blue;*/
 }
 
-#test {
-    margin: auto;
-    /*border: 1px solid red;*/
+
+/* Meddelanden */
+.alert-success {
+    height: 5vh;
+    width: 70%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: seagreen;
+    color: black;
+    border-radius: 10px;
 }
 
 h1 {
@@ -178,4 +182,14 @@ footer {
     height: 70px;
     background-color: #E8AC2F;
     color: #112126;
+}
+
+footer div {
+    padding-top: 25px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
