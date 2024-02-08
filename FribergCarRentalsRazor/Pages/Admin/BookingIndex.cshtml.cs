@@ -28,9 +28,7 @@ namespace FribergCarRentalsRazor.Pages.Admin
 
         public async Task OnGetAsync()
         {
-            BookingList = await bookingRep.GetAllBookings(); // hämtar endast de bokningar från det sparade kund Id:t
-            
-
+            BookingList = await bookingRep.GetAllBookings(); // hämtar endast de bokningar från det sparade kund Id:t    
         }
     }
 }

@@ -35,7 +35,7 @@ namespace FribergCarRentalsRazor.Pages
         public async Task<IActionResult> OnPostAsync()
         {
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
     }
 }

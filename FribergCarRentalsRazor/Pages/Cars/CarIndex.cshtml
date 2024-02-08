@@ -16,16 +16,14 @@
     </div>
 }
 
-@if (userRole == "Admin")
-                {
-<p>
-    <a asp-page="Create">Lägg till ny bil</a>
-</p>
-                }
-
-
 <p>Bokningskostnaden är 150 kr/dag.</p>
 <br />
+@if (userRole == "Admin")
+{
+    <p>
+        <a asp-page="Create">Lägg till ny bil</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>

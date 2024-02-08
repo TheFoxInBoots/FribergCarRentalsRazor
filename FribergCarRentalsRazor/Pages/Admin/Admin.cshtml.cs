@@ -35,7 +35,8 @@ namespace FribergCarRentalsRazor.Pages
 
             if (admin == null)
             {
-                return NotFound();
+                TempData["Message2"] = "Användarnamn eller lösenord är felaktigt!";
+                return Page();
             }
             else
             {
@@ -46,6 +47,8 @@ namespace FribergCarRentalsRazor.Pages
                 CookieOptions options = new CookieOptions();
                 options.Expires = DateTime.Now.AddHours(0.5); // Sparar Cookien i en halvtimme
                 httpContextAccessor.HttpContext.Response.Cookies.Append("UserRole", userRole, options);
+
+                TempData["Message"] = "Du har loggats in!";
             }
 
             return RedirectToPage("/Index");

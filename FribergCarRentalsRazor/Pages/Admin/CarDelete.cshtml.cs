@@ -41,7 +41,8 @@ namespace FribergCarRentalsRazor.Pages.Admin
             // Kontrollerar om CarId är null eller om carRep är null
             if (id == null || carRep == null)
             {
-                return NotFound(); // 
+                TempData["Message2"] = "Bilen kunde inte hittas!";
+                return Page(); 
             }
 
             // Hämtar kunden från CustomerRepository med det angivna CarId:t

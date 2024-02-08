@@ -53,14 +53,14 @@ namespace FribergCarRentalsRazor.Pages.Admin
             {
                 if (!CarExists(Car.CarId))
                 {
-                    return NotFound();
+                    return Page();
                 }
                 else
-                {
+                {                   
                     throw;
                 }
             }
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
 
         private bool CarExists(int id)

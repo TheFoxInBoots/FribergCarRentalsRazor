@@ -5,6 +5,13 @@
     ViewData["Title"] = "Delete";
 }
 
+@if (TempData["Message2"] != null)
+{
+    <br>
+    <div class="alert alert-fail">
+        @TempData["Message2"]
+    </div>
+}
 <h1>Delete</h1>
 
 <h3>Är du säker på att du vill ta bort den här bilen?</h3>

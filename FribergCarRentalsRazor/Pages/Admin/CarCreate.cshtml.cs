@@ -32,6 +32,7 @@ namespace FribergCarRentalsRazor.Pages.Admin
         {
             if (!ModelState.IsValid || carRep == null || Car == null)
             {
+                TempData["Message2"] = "Bilen kunde inte skapas!";
                 return Page();
             }
 
