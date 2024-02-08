@@ -6,8 +6,8 @@
 }
 
 <h1>Skapa bokning</h1>
-<img src="@Model.Car.Pic" alt="Bilbild" height="500px"/>
-<p>Bokningskostnaden är 150 kr/dag.</p>
+<img src="@Model.Car.Pic" alt="Bilbild" height="500px" class="center"/>
+<br />
 
 <div class="row">
     <div class="col-md-4">
@@ -37,6 +37,7 @@
     <a asp-page="/Customers/CustomerBookingIndex">Tillbaka till bokningar</a>
 </div>
 
+<br />
 
 <script>
     document.getElementById('start-date').addEventListener('change', function() {

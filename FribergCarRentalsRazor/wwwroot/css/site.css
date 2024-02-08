@@ -88,18 +88,30 @@ nav {
 
 
 /* Meddelanden */
-.alert-success {
+.alert-success, .alert-fail {
     height: 5vh;
     width: 70%;
     display: flex;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-radius: 5px;
+}
+
+.alert-success {    
     background-color: seagreen;
     color: black;
 }
+
+.alert-fail {
+    background-color: darkred;
+    color: #FEFEFE;
+}
+
+
 
 h1, h3 {
     margin: auto;
@@ -114,11 +126,10 @@ h1 {
 }
 
 h2 {
-    color: #FEFEFE;
     padding-bottom: 20px;
 }
 
-a, a:visited {
+a, a:visited, p, h2{
     color: #FEFEFE;
 }
 

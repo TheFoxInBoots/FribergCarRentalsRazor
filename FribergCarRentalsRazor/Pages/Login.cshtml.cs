@@ -35,7 +35,8 @@ namespace FribergCarRentalsRazor.Pages
 
             if (customer == null)
             {
-                return NotFound();
+                TempData["Message2"] = "Användarnamn eller lösenord är felaktigt!";
+                return Page();
             }
             else
             {
@@ -51,7 +52,7 @@ namespace FribergCarRentalsRazor.Pages
                 TempData["Message"] = "Du har loggats in!";
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
 
         public async Task<IActionResult> OnPostRegisterAsync(Customer customer)
@@ -59,6 +60,7 @@ namespace FribergCarRentalsRazor.Pages
             if (!ModelState.IsValid || customerRep == null || Customer == null)
             {
                 return Page();
+                TempData["Message2"] = "Ny kund kunde inte skapas!";
             }
 
             await customerRep.CreateCustomer(customer);

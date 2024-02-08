@@ -11,6 +11,12 @@
         @TempData["Message"]
     </div>
 }
+@if (TempData["Message2"] != null)
+{
+    <div class="alert alert-fail">
+        @TempData["Message2"]
+    </div>
+}
 <br />
 <div class="loginDiv">
         <!-- Inloggningsformulär -->
