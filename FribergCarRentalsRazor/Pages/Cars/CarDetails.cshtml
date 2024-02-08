@@ -10,30 +10,30 @@
 
 <div>
     <img src="@Html.DisplayFor(model => model.Car.Pic)" width="60%" class="center"/>
-
+    <br />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.Car.Brand)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Car.Brand)
         </dd>
-        <dt class="col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.Car.Model)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Car.Model)
         </dd>
-        <dt class="col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.Car.Year)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Car.Year)
         </dd>
-        <dt class="col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.Car.Color)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Car.Color)
         </dd>
     </dl>
@@ -49,3 +49,12 @@
         <a asp-page="/Cars/CarIndex">Tillbaka till bilar</a>
     </div>
 </div>
+
+<br />
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

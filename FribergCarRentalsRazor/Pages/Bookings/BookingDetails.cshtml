@@ -30,6 +30,12 @@
         </dd>
     </dl>
 </div>
+@if (userRole == "Admin")
+{
+    <div>
+        <a asp-page="/Admin/BookingIndex">Tillbaka till bokningar</a>
+    </div>
+}
 <div>
     <div>
     <a asp-page="/Bookings/BookingDetails" asp-route-id="@Model.Booking?.BookingId">Ändra</a>
@@ -38,12 +44,6 @@
 {
     <div>
         <a asp-page="/Customers/CustomerBookingIndex">Tillbaka till bokningar</a>
-    </div>
-}
-@if (userRole == "Admin")
-{
-    <div>
-        <a asp-page="/Admin/BookingIndex">Tillbaka till bokningar</a>
     </div>
 }
 </div>
