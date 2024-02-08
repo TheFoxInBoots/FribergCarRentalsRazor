@@ -58,13 +58,6 @@ namespace FribergCarRentalsRazor.Data
             await applicationDbContext.SaveChangesAsync();
         }
 
-        public async Task<Booking> EditBooking(Booking booking)
-        {
-            applicationDbContext.Update(booking);
-            await applicationDbContext.SaveChangesAsync();
-            return booking;
-        }
-
         public async Task<List<Booking>> GetBookingsByCustomerId(string customerId)
         {
             int customerIdAsInt;
@@ -80,8 +73,7 @@ namespace FribergCarRentalsRazor.Data
             }
             else
             {
-                // Hantera fallet då customerId inte kunde konverteras till en int
-                // Du kan till exempel returnera en tom lista
+                // Hantera fallet då customerId inte kunde konverteras till en int - returnerar en tom lista
                 return new List<Booking>();
             }
         }

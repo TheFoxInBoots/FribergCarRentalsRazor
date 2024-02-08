@@ -113,6 +113,11 @@ h1 {
     border-bottom: 1px dotted #ED6211;
 }
 
+h2 {
+    color: #FEFEFE;
+    padding-bottom: 20px;
+}
+
 a, a:visited {
     color: #FEFEFE;
 }
@@ -183,6 +188,13 @@ td {
 }
 
 .center {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginDiv {
+    width: 70%;
     display: flex;
     margin-left: auto;
     margin-right: auto;
