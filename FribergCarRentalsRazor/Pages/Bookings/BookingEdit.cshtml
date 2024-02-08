@@ -3,6 +3,8 @@
 
 @{
     ViewData["Title"] = "BookingEdit";
+    var customerId = HttpContext.Request.Cookies["CustomerId"];
+    var userRole = HttpContext.Request.Cookies["UserRole"];
 }
 
 <h1>Ändra bokning</h1>
@@ -31,9 +33,19 @@
     </div>
 </div>
 
-<div>
-    <a asp-page="/Customers/CustomerBookingIndex">Tillbaka till bokningar</a>
-</div>
+@if (userRole == "Customer")
+{
+    <div>
+        <a asp-page="/Customers/CustomerBookingIndex" asp-route-id="customerId">Tillbaka till bokningar</a>
+    </div>
+}
+@if (userRole == "Admin")
+{
+    <div>
+        <a asp-page="/Admin/BookingIndex">Tillbaka till bokningar</a>
+    </div>
+}
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

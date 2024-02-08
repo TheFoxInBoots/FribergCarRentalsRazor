@@ -37,13 +37,10 @@
     </div>
 }
 <div>
-    <div>
-    <a asp-page="/Bookings/BookingDetails" asp-route-id="@Model.Booking?.BookingId">Ändra</a>
-</div>
 @if (userRole == "Customer")
 {
     <div>
-        <a asp-page="/Customers/CustomerBookingIndex">Tillbaka till bokningar</a>
+            <a asp-page="/Customers/CustomerBookingIndex">Tillbaka till bokningar</a>
     </div>
 }
 </div>
